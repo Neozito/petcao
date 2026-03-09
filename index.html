@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Clínica Pet Cão em Cascavel - PR. Consultas, vacinas, exames, cirurgias, banho e tosa, medicamentos e pet shop com cuidado, amor e excelência." />
+  <title>Clínica Pet Cão | Cuidado, saúde e carinho para o seu pet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #07111a;
+      --bg-soft: #0d1a26;
+      --card: rgba(255,255,255,0.08);
+      --card-border: rgba(255,255,255,0.14);
+      --text: #f4f8fb;
+      --muted: #bfd0dd;
+      --primary: #1fd3a6;
+      --primary-2: #00b7ff;
+      --accent: #ffd166;
+      --dark: #051018;
+      --shadow: 0 25px 60px rgba(0,0,0,0.35);
+      --radius: 24px;
+      --max: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(0,183,255,0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(31,211,166,0.16), transparent 25%),
+        linear-gradient(180deg, #08131d 0%, #091521 35%, #07111a 100%);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .bg-blur {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .bg-blur::before,
+    .bg-blur::after {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      border-radius: 999px;
+      filter: blur(90px);
+      opacity: .18;
+    }
+
+    .bg-blur::before {
+      background: var(--primary-2);
+      top: -120px;
+      left: -120px;
+    }
+
+    .bg-blur::after {
+      background: var(--primary);
+      bottom: -120px;
+      right: -120px;
+    }
+
+    .topbar {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(6, 16, 25, 0.55);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-logo-img {
+      height: 54px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .brand h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.1rem;
+      line-height: 1.05;
+      letter-spacing: .2px;
+    }
+
+    .brand span {
+      display: block;
+      font-size: .83rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .menu a {
+      font-size: .95rem;
+      color: #e7f2f8;
+      opacity: .88;
+      transition: .25s ease;
+    }
+
+    .menu a:hover {
+      opacity: 1;
+      color: var(--primary);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 54px;
+      padding: 0 24px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      transition: .3s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: #031017;
+      box-shadow: 0 18px 40px rgba(0,183,255,0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 22px 48px rgba(0,183,255,0.3);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.14);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-3px);
+      background: rgba(255,255,255,0.1);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      isolation: isolate;
+      overflow: hidden;
+    }
+
+    .hero-media,
+    .parallax-section::before {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      transform: scale(1.08);
+      filter: brightness(.45) saturate(1.05);
+      z-index: -2;
+    }
+
+    .hero-media {
+      background-image:
+        linear-gradient(120deg, rgba(3,12,20,.78), rgba(3,12,20,.28)),
+        url('https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=1800&q=80');
+    }
+
+    .hero::after,
+    .parallax-section::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(4,12,19,0.2), rgba(4,12,19,0.78));
+      z-index: -1;
+    }
+
+    .hero-grid {
+      padding: 140px 0 80px;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: #e7f7ff;
+      margin-bottom: 22px;
+      font-size: .92rem;
+    }
+
+    .hero h2 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.7rem, 5.2vw, 5.2rem);
+      line-height: .98;
+      letter-spacing: -1.6px;
+      margin-bottom: 20px;
+      max-width: 12ch;
+    }
+
+    .hero h2 .gradient {
+      background: linear-gradient(135deg, #ffffff, #93f8dd 42%, #87d9ff 88%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 660px;
+      font-size: 1.08rem;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-badges span {
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      font-size: .92rem;
+      color: #eef7fb;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.13), rgba(255,255,255,0.05));
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .hero-card .rating {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .hero-card h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.7rem;
+      margin-bottom: 14px;
+    }
+
+    .hero-card ul {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      margin: 22px 0 26px;
+    }
+
+    .hero-card li {
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 18px;
+      color: #ebf6fb;
+    }
+
+    .hero-contact {
+      display: grid;
+      gap: 12px;
+      color: var(--muted);
+      font-size: .96rem;
+    }
+
+    section {
+      padding: 96px 0;
+      position: relative;
+    }
+
+    .section-header {
+      margin-bottom: 32px;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .section-tag {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-size: .8rem;
+    }
+
+    .section-header h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1.05;
+      max-width: 12ch;
+    }
+
+    .section-header p {
+      max-width: 580px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .glass-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .about-main p,
+    .about-side p {
+      color: var(--muted);
+      line-height: 1.85;
+    }
+
+    .about-stats {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .stat {
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.5rem;
+      margin-bottom: 6px;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .service-card {
+      position: relative;
+      overflow: hidden;
+      padding: 28px;
+      border-radius: 26px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0.045));
+      border: 1px solid rgba(255,255,255,0.12);
+      transition: transform .3s ease, border-color .3s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(31,211,166,0.5);
+    }
+
+    .service-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -35% -45% auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(0,183,255,.28), transparent 65%);
+    }
+
+    .service-icon {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, rgba(31,211,166,0.22), rgba(0,183,255,0.22));
+      font-size: 1.5rem;
+    }
+
+    .service-card h4 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .parallax-section {
+      min-height: 78vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .parallax-section::before {
+      content: "";
+      background-image:
+        linear-gradient(120deg, rgba(3,12,20,.7), rgba(3,12,20,.25)),
+        url('https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1800&q=80');
+    }
+
+    .highlight-box {
+      width: min(100%, 760px);
+      padding: 38px;
+      border-radius: 30px;
+      background: rgba(6, 19, 30, 0.6);
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .highlight-box h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.7rem);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .highlight-box p {
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 24px;
+      max-width: 56ch;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 220px;
+      gap: 16px;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: var(--shadow);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.08);
+    }
+
+    .gallery-item.large {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .gallery-item.wide {
+      grid-column: span 2;
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .cta-box {
+      padding: 34px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(31,211,166,0.15), rgba(0,183,255,0.12));
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: var(--shadow);
+    }
+
+    .cta-box h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2rem, 3vw, 2.9rem);
+      margin-bottom: 14px;
+    }
+
+    .cta-box p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .contact-info-box {
+      margin-top: 26px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-line {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .contact-line strong {
+      color: #fff;
+    }
+
+    .map-card {
+      min-height: 100%;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: var(--shadow);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .map-card iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      border: 0;
+      display: block;
+    }
+
+    footer {
+      padding: 34px 0 24px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      background: rgba(4,10,16,0.65);
+      backdrop-filter: blur(14px);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr .8fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .footer-brand p,
+    .footer-col p,
+    .footer-col li {
+      color: var(--muted);
+      line-height: 1.8;
+      list-style: none;
+    }
+
+    .footer-title {
+      font-weight: 800;
+      margin-bottom: 12px;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .footer-logo {
+      height: 54px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .footer-map-link {
+      display: inline-flex;
+      margin-top: 12px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #fff;
+      transition: .3s ease;
+    }
+
+    .footer-map-link:hover {
+      background: rgba(255,255,255,0.10);
+      transform: translateY(-2px);
+    }
+
+    .card-flags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-top: 12px;
+    }
+
+    .card-flags img {
+      height: 34px;
+      width: auto;
+      object-fit: contain;
+      padding: 8px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .copyright {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: #9fb5c4;
+      font-size: .92rem;
+      text-align: center;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      width: 68px;
+      height: 68px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      z-index: 80;
+      font-size: 1.8rem;
+      background: linear-gradient(135deg, #27d367, #11b452);
+      color: white;
+      box-shadow: 0 18px 36px rgba(17,180,82,0.35);
+      animation: pulse 2.2s infinite;
+    }
+
+    .whatsapp-float::after {
+      content: 'Agende agora';
+      position: absolute;
+      right: 82px;
+      white-space: nowrap;
+      font-size: .9rem;
+      font-weight: 700;
+      color: #fff;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: rgba(6,18,28,0.88);
+      border: 1px solid rgba(255,255,255,0.14);
+      opacity: 0;
+      transform: translateX(10px);
+      transition: .3s ease;
+      pointer-events: none;
+    }
+
+    .whatsapp-float:hover::after {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(39,211,103,.42), 0 18px 36px rgba(17,180,82,0.35); }
+      70% { box-shadow: 0 0 0 20px rgba(39,211,103,0), 0 18px 36px rgba(17,180,82,0.35); }
+      100% { box-shadow: 0 0 0 0 rgba(39,211,103,0), 0 18px 36px rgba(17,180,82,0.35); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .about-grid,
+      .footer-grid,
+      .services-grid,
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero h2,
+      .section-header h3 {
+        max-width: none;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .menu {
+        display: none;
+      }
+
+      .hero-grid {
+        padding-top: 120px;
+      }
+
+      .hero h2 {
+        font-size: clamp(2.4rem, 10vw, 3.7rem);
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .about-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 240px;
+      }
+
+      .gallery-item.large,
+      .gallery-item.wide {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+
+      .highlight-box,
+      .hero-card,
+      .glass-card,
+      .cta-box,
+      .service-card {
+        padding: 24px;
+      }
+
+      .brand-logo-img,
+      .footer-logo {
+        height: 46px;
+      }
+
+      .whatsapp-float {
+        width: 62px;
+        height: 62px;
+        right: 16px;
+        bottom: 16px;
+      }
+
+      .whatsapp-float::after {
+        display: none;
+      }
+
+      section {
+        padding: 78px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-blur"></div>
+
+  <header class="topbar">
+    <div class="container nav">
+      <a href="#inicio" class="brand">
+        <img src="img/logo-petcao-topo.png" alt="Clínica Pet Cão" class="brand-logo-img">
+        <div>
+          <h1>Clínica Pet Cão</h1>
+          <span>Hospital veterinário em Cascavel - PR</span>
+        </div>
+      </a>
+
+      <nav class="menu">
+        <a href="#quem-somos">Quem somos</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#contato">Contato</a>
+        <a href="https://wa.me/5545999577637" target="_blank" class="btn btn-primary">Agendar atendimento</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-media"></div>
+      <div class="container hero-grid">
+        <div class="reveal visible">
+          <span class="eyebrow">⭐ 4,8 de avaliação • Cuidado com amor e excelência</span>
+          <h2>Saúde, estética e <span class="gradient">bem-estar completo</span> para o seu pet.</h2>
+          <p>
+            Na Clínica Pet Cão, cada atendimento é pensado para oferecer segurança, carinho e confiança.
+            Consultas, vacinas, exames, cirurgias, medicamentos, banho e tosa e uma pet shop cheia de novidades,
+            tudo em um só lugar para cuidar de quem faz parte da sua família.
+          </p>
+
+          <div class="hero-actions">
+            <a href="https://wa.me/5545999577637" target="_blank" class="btn btn-primary">Falar no WhatsApp</a>
+            <a href="#servicos" class="btn btn-secondary">Conhecer serviços</a>
+          </div>
+
+          <div class="hero-badges">
+            <span>📍 Região Norte de Cascavel</span>
+            <span>💳 Aceitamos cartões</span>
+            <span>🛁 Banho e tosa</span>
+            <span>🩺 Clínica veterinária</span>
+          </div>
+        </div>
+
+        <aside class="hero-card reveal">
+          <div class="rating">★★★★★ <span>4,8 com 51 avaliações</span></div>
+          <h3>Atendimento humano para quem ama pets de verdade.</h3>
+          <p style="color: var(--muted); line-height: 1.8;">
+            Estrutura completa para oferecer o melhor em estética e saúde animal com conforto,
+            cuidado e foco total no bem-estar do seu melhor amigo.
+          </p>
+
+          <ul>
+            <li>Consultas e acompanhamento veterinário</li>
+            <li>Vacinas, exames de sangue e imagem</li>
+            <li>Cirurgias, medicamentos e pet shop</li>
+            <li>Banho e tosa com carinho e excelência</li>
+          </ul>
+
+          <div class="hero-contact">
+            <div><strong>Endereço:</strong> R. Altemar Dutra, 1514 - Floresta, Cascavel - PR</div>
+            <div><strong>Horário:</strong> Aberto • Fecha 12:00 • Reabre às 13:30</div>
+            <div><strong>Telefone:</strong> (45) 99957-7637</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="quem-somos">
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <span class="section-tag">Quem somos</span>
+            <h3>Uma clínica feita para acolher você e cuidar do seu pet.</h3>
+          </div>
+          <p>
+            Nossa missão é oferecer o melhor em serviços veterinários, com foco no bem-estar animal,
+            conforto no atendimento e satisfação de cada tutor que confia no nosso trabalho.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="glass-card about-main reveal">
+            <p>
+              A Clínica Pet Cão é referência na região norte de Cascavel quando o assunto é saúde e estética pet.
+              Unimos atendimento acolhedor, estrutura moderna e amor genuíno pelos animais para entregar uma experiência completa.
+            </p>
+            <div class="about-stats">
+              <div class="stat">
+                <strong>4,8</strong>
+                <span>Avaliação média</span>
+              </div>
+              <div class="stat">
+                <strong>51+</strong>
+                <span>Comentários de clientes</span>
+              </div>
+              <div class="stat">
+                <strong>100%</strong>
+                <span>Foco em bem-estar</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-card about-side reveal">
+            <p>
+              Aqui, cada detalhe foi pensado para oferecer confiança, praticidade e carinho: desde consultas e vacinas até exames,
+              cirurgias, banho e tosa, venda de medicamentos e uma lojinha pet cheia de novidades.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicos">
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <span class="section-tag">Serviços</span>
+            <h3>Tudo o que seu pet precisa em um só lugar.</h3>
+          </div>
+          <p>
+            Soluções completas para prevenção, diagnóstico, tratamento e cuidados estéticos com atendimento dedicado e profissional.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card reveal">
+            <div class="service-icon">🩺</div>
+            <h4>Consultas veterinárias</h4>
+            <p>Acompanhamento clínico com atenção individualizada para manter a saúde do seu pet sempre em dia.</p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">💉</div>
+            <h4>Vacinas</h4>
+            <p>Protocolos de vacinação com segurança e orientação para prevenção de doenças em cães e gatos.</p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">🧪</div>
+            <h4>Exames</h4>
+            <p>Exames de sangue e imagem para diagnósticos mais rápidos, precisos e confiáveis.</p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">🏥</div>
+            <h4>Cirurgias</h4>
+            <p>Procedimentos realizados com responsabilidade, cuidado e foco total na recuperação do animal.</p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">🛁</div>
+            <h4>Banho e tosa</h4>
+            <p>Serviços de estética com carinho, higiene e conforto para deixar seu pet lindo e bem cuidado.</p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">🛍️</div>
+            <h4>Pet shop e medicamentos</h4>
+            <p>Produtos, medicamentos e novidades para atender a rotina do seu pet com praticidade.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="parallax-section">
+      <div class="container">
+        <div class="highlight-box reveal">
+          <span class="section-tag" style="color:#93f8dd;">Cuidado que se sente</span>
+          <h3>Seu pet merece atendimento de excelência.</h3>
+          <p>
+            Mais do que uma clínica, criamos um ambiente acolhedor para tutores e animais, com uma experiência moderna,
+            carinhosa e preparada para todas as fases da vida do seu companheiro.
+          </p>
+          <a href="https://wa.me/5545999577637" target="_blank" class="btn btn-primary">Agendar pelo WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="galeria">
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <span class="section-tag">Galeria</span>
+            <h3>Conheça a Clínica Pet Cão por dentro e por fora.</h3>
+          </div>
+          <p>
+            Estrutura real da clínica, ambiente interno, fachada e detalhes que transmitem confiança, acolhimento e cuidado.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-item large reveal">
+            <img src="img/fachada-principal.jpg" alt="Fachada principal da Clínica Pet Cão" />
+          </figure>
+
+          <figure class="gallery-item reveal">
+            <img src="img/interior-recepcao.jpg" alt="Recepção da Clínica Pet Cão" />
+          </figure>
+
+          <figure class="gallery-item reveal">
+            <img src="img/fachada-secundaria.jpg" alt="Vista externa da Clínica Pet Cão" />
+          </figure>
+
+          <figure class="gallery-item wide reveal">
+            <img src="img/interior-produtos.jpg" alt="Interior da loja e produtos da Clínica Pet Cão" />
+          </figure>
+
+          <figure class="gallery-item reveal">
+            <img src="img/logo-petcao-fachada.png" alt="Logo da Clínica Pet Cão na fachada" />
+          </figure>
+
+          <figure class="gallery-item reveal">
+            <img src="img/interior-extra.jpg" alt="Ambiente interno da Clínica Pet Cão" />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato">
+      <div class="container contact-layout">
+        <div class="cta-box reveal">
+          <span class="section-tag" style="color:#93f8dd;">Call to action</span>
+          <h3>Agende agora e ofereça o melhor para o seu pet.</h3>
+          <p>
+            Fale com a nossa equipe, tire dúvidas e marque seu atendimento de forma rápida e prática pelo WhatsApp.
+          </p>
+
+          <div class="hero-actions">
+            <a href="https://wa.me/5545999577637" target="_blank" class="btn btn-primary">Chamar no WhatsApp</a>
+            <a href="tel:+5545999577637" class="btn btn-secondary">Ligar agora</a>
+          </div>
+
+          <div class="contact-info-box">
+            <div class="contact-line"><strong>Endereço:</strong> R. Altemar Dutra, 1514 - Floresta, Cascavel - PR, 85801-179</div>
+            <div class="contact-line"><strong>Telefone:</strong> (45) 99957-7637</div>
+            <div class="contact-line"><strong>Horário:</strong> Aberto • Fecha 12:00 • Reabre às 13:30</div>
+          </div>
+        </div>
+
+        <div class="map-card reveal">
+          <iframe
+            src="https://www.google.com/maps?q=R.%20Altemar%20Dutra,%201514%20-%20Floresta,%20Cascavel%20-%20PR,%2085801-179&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+            title="Mapa da Clínica Pet Cão">
+          </iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand" style="margin-bottom: 12px;">
+            <img src="img/logo-petcao-topo.png" alt="Clínica Pet Cão" class="footer-logo">
+            <div>
+              <h1>Clínica Pet Cão</h1>
+              <span>Saúde, estética e carinho para o seu pet</span>
+            </div>
+          </div>
+
+          <p>
+            Atendimento veterinário completo em Cascavel - PR, com foco em excelência,
+            bem-estar animal e confiança para toda a família.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-title">Localização</div>
+          <p>R. Altemar Dutra, 1514 - Floresta, Cascavel - PR</p>
+          <a href="https://maps.google.com/?q=R.%20Altemar%20Dutra,%201514%20-%20Floresta,%20Cascavel%20-%20PR,%2085801-179" target="_blank" class="footer-map-link">
+            Abrir no Google Maps
+          </a>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-title">Aceitamos cartões</div>
+          <div class="card-flags">
+            <img src="img/visa.png" alt="Visa">
+            <img src="img/mastercard.png" alt="Mastercard">
+            <img src="img/elo.png" alt="Elo">
+            <img src="img/debito.png" alt="Débito">
+            <img src="img/credito.png" alt="Crédito">
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright">
+        © 2026 Clínica Pet Cão • One Page desenvolvida com visual moderno e foco em conversão.
+      </div>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/5545999577637" target="_blank" aria-label="Falar no WhatsApp">✆</a>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    reveals.forEach((item) => observer.observe(item));
+  </script>
+</body>
+</html>
